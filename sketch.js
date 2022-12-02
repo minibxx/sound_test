@@ -1,32 +1,20 @@
 var wave;
-var playing = false;
 
 var button;
-function setup() {
-  createCanvas(640, 440);
-  wave = new p5.Oscillator();
-  wave.setType('sine');
-  //wave.start();
-  wave.freq(440);  //주파수
-  wave.amp(0); //volume
-
-  button = createButton('play/pause');
-  button.mousePressed(toggle);
+function setup(){
+  createCanvas(displayWidth,displayHeight);
+  r = random(50,255);
+  g = random(0,200);
+  b = random(50,255);
+}
+function draw(){
+  background(r, g, b);
+  console.log('draw');
 }
 
-
-// function draw() {
-//   background(220);
-// }
-
-function toggle(){
-  if(!playing){
-    wave.start(); //소리 나기 시작
-    wave.amp(0.5,1);
-    playing=true;
-  }
-  else{
-    wave.amp(0,1);
-    playing = false;
-  }
+function deviceMoved()(){
+  r = map(accelerationX, -90, 90, 100, 175);
+  g = map(accelerationY, -90, 90, 100, 200);
+  b = map(accelerationZ, -90, 90, 100, 200);
 }
+
