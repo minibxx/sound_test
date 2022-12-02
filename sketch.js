@@ -1,6 +1,5 @@
-var wave;
+let r, g, b;
 
-var button;
 function setup(){
   createCanvas(displayWidth,displayHeight);
   r = random(50,255);
@@ -12,7 +11,7 @@ function draw(){
   console.log('draw');
 }
 
-function deviceMoved()(){
+function deviceMoved(){
   r = map(accelerationX, -90, 90, 100, 175);
   g = map(accelerationY, -90, 90, 100, 200);
   b = map(accelerationZ, -90, 90, 100, 200);
